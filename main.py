@@ -1,4 +1,6 @@
 import szamologep
 
-osszeg = szamologep.osszeadas()
-print(osszeg)
+# szamologep.osszeadas()
+# szamologep.kivonas()
+
+szamologep.szamologep()
