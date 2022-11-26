@@ -28,30 +28,27 @@ def kivonas():
 
 def szamologep():
     #adatbekérés
-    szam1 = int(adatbekeres("Adj meg egy számot: "))
+    szam1 = float(adatbekeres("Adj meg egy számot: "))
     muvjel = adatbekeres("Add meg a műveleti jelet: ")
-    szam2 = int(adatbekeres("Adj meg még egy számot: "))
+    szam2 = float(adatbekeres("Adj meg még egy számot: "))
 
     #számolás
     szoveg = ""
     eredmeny = 0
-    if muvjel == "+":
-        eredmeny = szam1 + szam2
-    elif muvjel == "-":
-        eredmeny = szam1 - szam2
-    elif muvjel == "*":
-        eredmeny = szam1 * szam2
-    elif muvjel == "/":
-        eredmeny = szam1 / szam2
-    else:
-        szoveg = "nem éretlmezhető a művelet"
+    match muvjel:
+        case "+": eredmeny = osszead(szam1, szam2)
+        case "-": eredmeny = kivon(szam1, szam2)
+        case "*": eredmeny = szoroz(szam1, szam2)
+        case "/": eredmeny = oszt(szam1, szam2)
+        case _: szoveg = "nem éretlmezhető a művelet"
 
     #kiírás
     kiiras(szam1, muvjel, szam2, eredmeny, szoveg)
 
+"""paraméter adás"""
 def adatbekeres(szoveg):
     print("-" * 20)
-    kismacska = input(szoveg)
+    kismacska = input(szoveg)  # a tanárnő adta meg kismacskának xd
     return kismacska
 
 
@@ -63,4 +60,20 @@ def kiiras(szam1, muvjel, szam2, eredmeny, szoveg):
         print(szoveg)
 
     print("-" * 20)
+
+
+def osszead(a, b):
+    return a + b
+
+
+def kivon(a, b):
+    return a - b
+
+
+def szoroz(a, b):
+    return a * b
+
+
+def oszt(a, b):
+    return a / b
 
